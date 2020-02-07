@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>My React App</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useEffect, useState } = React;
+      const App = () => {
+        const [product, setProduct] = useState([]);
+
+        useEffect(() => {
+          axios.get("/api/products").then(res => {
+            setProduct(res.data);
+          });
+        }, []);
+
+        return (
+          <div>
+            <div className="card" style={{ width: 18 }}>
+              <div className="card-body">
+                <h5 className="card-title">{product.name}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">
+                  {product.suggestedPrice}
+                </h6>
+                <p className="card-text">{product.description}</p>
+              </div>
+            </div>
+          </div>
+        );
+      };
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<App />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
