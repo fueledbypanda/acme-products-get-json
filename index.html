@@ -22,7 +22,7 @@
     <div id="root"></div>
     <script type="text/babel">
       const { useEffect, useState } = React;
-      const App = () => {
+      function App() {
         const [product, setProduct] = useState([]);
 
         useEffect(() => {
@@ -44,7 +44,7 @@
             </div>
           </div>
         );
-      };
+      }
     </script>
     <script type="text/babel">
       ReactDOM.render(<App />, document.querySelector("#root"));
