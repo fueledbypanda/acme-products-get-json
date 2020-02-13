@@ -19,41 +19,45 @@
   </head>
   <body>
     <h1>My React App</h1>
-    <div id="root"></div>
+    <div id="root" className="container"></div>
     <script type="text/babel">
       const { useEffect, useState } = React;
       function Card({ product }) {
         const styles = {
           main: {
             flexDirection: "column",
-            fontFamily: "fantasy",
+            // fontFamily: "fantasy",
             color: "white",
             padding: "2rem",
             backgroundColor: "teal",
             borderRadius: "1rem",
             width: "18rem",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             display: "flex",
             margin: "1rem",
-            alignItems: "center",
+            // alignItems: "center",
             flexWrap: "wrap"
           },
           container: {
             display: "flex",
             flexWrap: "wrap",
-            width: "18rem",
+            justifyContent: "space-between",
+            // alignItems: "center",
+            width: "10rem",
             margin: "1rem"
           }
         };
         return (
-          <div className="container" style={styles.container}>
-            <div className="card" style={styles.main}>
-              <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
-                <h6 className="card-subtitle mb-2">
-                  ${product.suggestedPrice}.00
-                </h6>
-                <p className="card-text">{product.description}</p>
+          <div className="row" style={styles.container}>
+            <div className="col-sm">
+              <div className="card" style={styles.main}>
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <h6 className="card-subtitle mb-2">
+                    ${product.suggestedPrice}.00
+                  </h6>
+                  <p className="card-text">{product.description}</p>
+                </div>
               </div>
             </div>
           </div>
